@@ -1,0 +1,32 @@
+<div class="form-group">
+  @if (label) {
+    <label class="form-label" [for]="id">{{ label }}</label>
+  }
+  @if (currencyMask) {
+    <input
+      [type]="type"
+      [placeholder]="placeholder"
+      [id]="id"
+      class="form-input"
+      [ngClass]="[showErrors ? 'input-error' : '']"
+      [formControl]="internalControl"
+      currencyMask
+      [options]="currencyOptions"
+    />
+  } @else {
+    <input
+      [type]="type"
+      [placeholder]="placeholder"
+      [value]="value"
+      [id]="id"
+      class="form-input"
+      (input)="onInputChange($event)"
+      (blur)="onTouched()"
+      [ngClass]="[showErrors ? 'input-error' : '']"
+      [disabled]="disabled"
+    />
+  }
+  @if (showErrors) {
+    <span class="form-error">{{ errorMessage }}</span>
+  }
+</div>

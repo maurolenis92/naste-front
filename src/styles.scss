@@ -1,1 +1,195 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use '@angular/material' as mat;
+@use 'styles/main.scss';
+@import 'styles/abstracts/variables';
+
+@include mat.core();
+
+// Paleta primaria personalizada - Verde suave (#22c55e)
+$custom-green-palette: (
+  50: #f0fdf4,
+  100: #dcfce7,
+  200: #bbf7d0,
+  300: #86efac,
+  400: #4ade80,
+  500: #22c55e,
+  // Color principal
+  600: #16a34a,
+  700: #15803d,
+  800: #166534,
+  900: #14532d,
+  A100: #dcfce7,
+  A200: #bbf7d0,
+  A400: #4ade80,
+  A700: #16a34a,
+  contrast: (
+    50: #0a0e1a,
+    100: #0a0e1a,
+    200: #0a0e1a,
+    300: #0a0e1a,
+    400: #0a0e1a,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #0a0e1a,
+    A200: #0a0e1a,
+    A400: #0a0e1a,
+    A700: #ffffff,
+  ),
+);
+
+// Paleta de acento personalizada - Naranja (#f97316)
+$custom-orange-palette: (
+  50: #fff7ed,
+  100: #ffedd5,
+  200: #fed7aa,
+  300: #fdba74,
+  400: #fb923c,
+  500: #f97316,
+  // Color de acento
+  600: #ea580c,
+  700: #c2410c,
+  800: #9a3412,
+  900: #7c2d12,
+  A100: #ffedd5,
+  A200: #fed7aa,
+  A400: #fb923c,
+  A700: #ea580c,
+  contrast: (
+    50: #0a0e1a,
+    100: #0a0e1a,
+    200: #0a0e1a,
+    300: #0a0e1a,
+    400: #0a0e1a,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #0a0e1a,
+    A200: #0a0e1a,
+    A400: #0a0e1a,
+    A700: #ffffff,
+  ),
+);
+
+$naste-front-primary: mat.define-palette($custom-green-palette, 500, 300, 700);
+$naste-front-accent: mat.define-palette($custom-orange-palette, 500, 400, 600);
+$naste-front-warn: mat.define-palette(mat.$red-palette, 500, 300, 700);
+
+$naste-front-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $naste-front-primary,
+      accent: $naste-front-accent,
+      warn: $naste-front-warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+$naste-front-theme-dark: mat.define-dark-theme(
+  (
+    color: (
+      primary: $naste-front-primary,
+      accent: $naste-front-accent,
+      warn: $naste-front-warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+// ⚠️ OPTIMIZACIÓN: Solo importar temas de componentes que realmente usamos
+// Esto reduce el CSS generado de ~100KB a ~15KB y mejora significativamente DevTools
+
+// === CORE (Requerido siempre) ===
+@include mat.core-theme($naste-front-theme-dark);
+
+// === COMPONENTES EN USO ===
+
+// MatTabsModule - Usado en: budget-detail.component
+@include mat.tabs-theme($naste-front-theme-dark);
+
+// MatChipsModule - Usado en: budget-detail.component (filtros de categoría)
+@include mat.chips-theme($naste-front-theme-dark);
+
+// MatDialogModule - Usado en: create-category-modal
+@include mat.dialog-theme($naste-front-theme-dark);
+
+// MatMenuModule - Usado en: dashboard-layout (menú de usuario)
+@include mat.menu-theme($naste-front-theme-dark);
+
+// MatIconModule - Usado en: múltiples componentes (iconos material)
+@include mat.icon-theme($naste-front-theme-dark);
+
+// MatProgressBarModule - Usado en: loaders y progress indicators
+@include mat.progress-bar-theme($naste-front-theme-dark);
+
+// === COMPONENTES PARA DATE-PICKER ===
+
+// MatDatepickerModule - Usado en: date-picker.component
+@include mat.datepicker-theme($naste-front-theme-dark);
+
+// MatFormFieldModule - Usado en: date-picker.component, select-input.component
+@include mat.form-field-theme($naste-front-theme-dark);
+
+// MatInputModule - Usado en: date-picker.component
+@include mat.input-theme($naste-front-theme-dark);
+
+// === COMPONENTES DISPONIBLES (Comentados, descomentar si se necesitan) ===
+// @include mat.button-theme($naste-front-theme-dark);
+// @include mat.select-theme($naste-front-theme-dark);
+// @include mat.checkbox-theme($naste-front-theme-dark);
+// @include mat.radio-theme($naste-front-theme-dark);
+// @include mat.slide-toggle-theme($naste-front-theme-dark);
+// @include mat.slider-theme($naste-front-theme-dark);
+// @include mat.tooltip-theme($naste-front-theme-dark);
+@include mat.snack-bar-theme($naste-front-theme-dark);
+// @include mat.card-theme($naste-front-theme-dark);
+// @include mat.table-theme($naste-front-theme-dark);
+// @include mat.paginator-theme($naste-front-theme-dark);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  --mat-form-field-subscript-text-line-height: 2px;
+}
+
+// ==========================================================================
+// Angular Material Dialog Custom Styles
+// ==========================================================================
+.custom-dialog-container {
+  .mat-mdc-dialog-container {
+    background: transparent !important;
+    box-shadow: none !important;
+
+    .mdc-dialog__surface {
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+  }
+}
+
+// ==========================================================================
+// Angular Material Snackbar Custom Styles
+// ==========================================================================
+.snackbar-error {
+  --mdc-snackbar-container-color: #ef4444;
+  --mat-snack-bar-button-color: #ffffff;
+  --mdc-snackbar-supporting-text-color: #ffffff;
+}
+
+.snackbar-success {
+  --mdc-snackbar-container-color: #22c55e;
+  --mat-snack-bar-button-color: #ffffff;
+  --mdc-snackbar-supporting-text-color: #ffffff;
+}

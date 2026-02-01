@@ -1,0 +1,47 @@
+// ==========================================================================
+// Dark Theme - Tema oscuro (por defecto)
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+// El tema oscuro ya está aplicado por defecto en las variables
+// Este archivo puede contener overrides o variantes específicas
+
+body[data-theme='dark'] {
+  background: $bg-primary;
+  color: $text-primary;
+}
+
+// Scrollbar global con tema oscuro
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $gray-600;
+  border-radius: $border-radius-full;
+
+  &:hover {
+    background: $gray-500;
+  }
+}
+
+// Mejoras para inputs en theme oscuro
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: $text-primary;
+  -webkit-box-shadow: 0 0 0 1000px $bg-tertiary inset;
+  transition: background-color 5000s ease-in-out 0s;
+}

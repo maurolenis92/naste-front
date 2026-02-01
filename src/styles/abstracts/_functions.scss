@@ -1,0 +1,20 @@
+// ==========================================================================
+// Functions - Utilidades de cálculo
+// ==========================================================================
+
+@use 'variables' as *;
+
+// Convertir px a rem
+// @param {number} $px - Valor en píxeles
+// @return {string} - Valor en rem
+@function rem($px, $base: 16) {
+  @return calc($px / $base) * 1rem;
+}
+
+// Añadir opacidad a un color
+// @param {color} $color - Color base
+// @param {number} $amount - Opacidad (0-1)
+// @return {color} - Color con opacidad
+@function opacity($color, $amount) {
+  @return rgba($color, $amount);
+}

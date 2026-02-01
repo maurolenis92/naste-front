@@ -8,7 +8,7 @@ import angularTemplateParser from '@angular-eslint/template-parser';
 
 export default [
   {
-    ignores: ['node_modules/**', 'dist/**', '.angular/**', 'coverage/**'],
+    ignores: ['node_modules/**', 'dist/**', '.angular/**', 'coverage/**', 'src/app/app.component.ts'],
   },
   {
     files: ['**/*.ts'],
@@ -29,12 +29,31 @@ export default [
       ...tseslint.configs.recommended.rules,
       ...prettierConfig.rules,
       'prettier/prettier': 'error',
-      '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/explicit-function-return-type': 'error',
+      '@typescript-eslint/no-useless-constructor': 'error',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
-      '@typescript-eslint/no-unused-vars': [
+      '@typescript-eslint/explicit-member-accessibility': [
         'error',
-        { argsIgnorePattern: '^_' },
+        {
+          accessibility: 'explicit', // Requiere modificadores explícitos en todos los miembros
+          overrides: {
+            constructors: 'no-public', // Los constructores no necesitan 'public' explícito
+            parameterProperties: 'explicit', // Parámetros del constructor requieren modificador explícito
+            methods: 'explicit', // Métodos requieren modificador explícito
+          },
+          ignoredMethodNames: [
+            // Métodos de ciclo de vida de Angular que no requieren modificador de accesibilidad
+            'ngOnInit',
+            'ngOnDestroy',
+            'ngOnChanges',
+            'ngDoCheck',
+            'ngAfterContentInit',
+            'ngAfterContentChecked',
+            'ngAfterViewInit',
+            'ngAfterViewChecked',
+          ],
+        },
       ],
     },
   },

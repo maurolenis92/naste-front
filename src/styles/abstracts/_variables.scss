@@ -1,0 +1,273 @@
+// ==========================================================================
+// NASTE - Sistema de Variables SCSS
+// Paleta basada en: sage green, cream, soft yellow, coral, dark background
+// Estilo: Glassmorphism con tema oscuro
+// ==========================================================================
+
+// ==========================================================================
+// COLORES DE MARCA
+// Usar estos colores para elementos principales de la interfaz
+// ==========================================================================
+
+// Primario - Sage Green (botones principales, estados activos, éxito)
+$primary-color: #8fa686;
+$primary-light: #a8b89f;
+$primary-dark: #728569;
+
+// Secundario - Cream/Beige (fondos claros, texto sobre oscuro, highlights suaves)
+$secondary-color: #f5e6c8;
+$secondary-light: #fbf4e4;
+$secondary-dark: #e8d4a8;
+
+// Acento - Coral (CTAs, precios, alertas importantes, badges destacados)
+$accent-color: #e8a889;
+$accent-light: #f0c0a8;
+$accent-dark: #d4896a;
+
+// Terciario - Soft Yellow (badges secundarios, highlights, decoración)
+$tertiary-color: #d4c896;
+$tertiary-light: #e2d8b0;
+$tertiary-dark: #c0b47c;
+
+// ==========================================================================
+// COLORES DE ESTADO
+// Usar para feedback visual: éxito, advertencia, error, información
+// ==========================================================================
+
+$success-color: #8fa686; // Sage green - pagado, completado, activo
+$success-light: #a8b89f;
+$success-dark: #728569;
+
+$warning-color: #d4c896; // Soft yellow - pendiente, en proceso
+$warning-light: #e2d8b0;
+$warning-dark: #c0b47c;
+
+$error-color: #d4756a; // Coral oscuro - cancelado, error, eliminar
+$error-light: #e89a91;
+$error-dark: #b85a50;
+
+$info-color: #89b8c4; // Cyan suave - información, tips
+$info-light: #a8ccd6;
+$info-dark: #6a9aa8;
+
+// ==========================================================================
+// COLORES NEUTROS
+// Base para fondos, bordes y textos
+// ==========================================================================
+
+$white: #ffffff;
+$black: #000000;
+
+$gray-50: #f8f9fa;
+$gray-100: #f1f3f4;
+$gray-200: #e2e5e8;
+$gray-300: #c4c9ce;
+$gray-400: #9aa1a9;
+$gray-500: #6b7280;
+$gray-600: #4b5563;
+$gray-700: #374151;
+$gray-800: #1f2937;
+$gray-900: #1a1a1a; // Color base del logo
+$gray-950: #0f0f0f;
+
+// ==========================================================================
+// COLORES DE TEXTO
+// Jerarquía visual para contenido textual
+// ==========================================================================
+
+$text-primary: #ffffff; // Títulos y texto principal sobre fondo oscuro
+$text-secondary: #c4c9ce; // Texto secundario, descripciones
+$text-muted: #9aa1a9; // Texto terciario, placeholders
+$text-disabled: #6b7280; // Texto deshabilitado
+$text-inverse: #1a1a1a; // Texto sobre fondos claros (botones coral, etc.)
+$text-accent: #e8a889; // Texto destacado (precios, totales)
+
+// ==========================================================================
+// COLORES DE FONDO
+// Capas de profundidad para el tema oscuro
+// ==========================================================================
+
+$bg-primary: #1a1a1a; // Fondo principal de la app
+$bg-secondary: #242424; // Fondo del sidebar, secciones
+$bg-tertiary: #2e2e2e; // Fondo de cards, inputs
+$bg-elevated: #383838; // Modals, dropdowns, tooltips
+$bg-inverse: #f5e6c8; // Fondos claros (cream)
+
+// ==========================================================================
+// GLASSMORPHISM
+// Variables específicas para el efecto de vidrio esmerilado
+// ==========================================================================
+
+$glass-bg: rgba(46, 46, 46, 0.7);
+$glass-bg-light: rgba(46, 46, 46, 0.5);
+$glass-bg-strong: rgba(46, 46, 46, 0.85);
+$glass-border: rgba(255, 255, 255, 0.1);
+$glass-border-light: rgba(255, 255, 255, 0.05);
+$glass-border-strong: rgba(255, 255, 255, 0.2);
+$glass-blur: 12px;
+$glass-blur-light: 8px;
+$glass-blur-strong: 20px;
+
+// Overlays con colores de marca
+$overlay-dark: rgba(26, 26, 26, 0.9);
+$overlay-primary: rgba(143, 166, 134, 0.1);
+$overlay-accent: rgba(232, 168, 137, 0.1);
+
+// ==========================================================================
+// GRADIENTES
+// Para fondos decorativos y elementos especiales
+// ==========================================================================
+
+$gradient-primary: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+$gradient-accent: linear-gradient(135deg, $accent-color 0%, $accent-dark 100%);
+$gradient-warm: linear-gradient(135deg, $accent-color 0%, $tertiary-color 100%);
+$gradient-nature: linear-gradient(135deg, $primary-color 0%, $tertiary-color 100%);
+$gradient-dark: linear-gradient(180deg, $bg-primary 0%, $gray-950 100%);
+$gradient-glass: linear-gradient(
+  135deg,
+  rgba(255, 255, 255, 0.1) 0%,
+  rgba(255, 255, 255, 0.05) 100%
+);
+
+// ==========================================================================
+// SOMBRAS
+// Profundidad y elevación de elementos
+// ==========================================================================
+
+// Sombras generales (tema oscuro)
+$shadow-sm:
+  0 1px 3px rgba(0, 0, 0, 0.4),
+  0 1px 2px rgba(0, 0, 0, 0.3);
+$shadow-md:
+  0 4px 6px rgba(0, 0, 0, 0.35),
+  0 2px 4px rgba(0, 0, 0, 0.25);
+$shadow-lg:
+  0 10px 25px rgba(0, 0, 0, 0.5),
+  0 5px 15px rgba(0, 0, 0, 0.3);
+$shadow-xl:
+  0 20px 40px rgba(0, 0, 0, 0.6),
+  0 10px 20px rgba(0, 0, 0, 0.35);
+
+// Sombras con glow de colores de marca (para hover, focus, elementos destacados)
+$shadow-glow-primary:
+  0 4px 20px rgba(143, 166, 134, 0.25),
+  0 2px 8px rgba(143, 166, 134, 0.15);
+$shadow-glow-accent:
+  0 4px 20px rgba(232, 168, 137, 0.3),
+  0 2px 8px rgba(232, 168, 137, 0.2);
+$shadow-glow-tertiary:
+  0 4px 20px rgba(212, 200, 150, 0.25),
+  0 2px 8px rgba(212, 200, 150, 0.15);
+
+// Sombra interna (inputs, campos de texto)
+$shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+
+// ==========================================================================
+// BORDES
+// Estilos de borde para diferentes contextos
+// ==========================================================================
+
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+$border-radius-2xl: 24px;
+$border-radius-full: 50%;
+
+$border-light: 1px solid rgba(255, 255, 255, 0.1);
+$border-medium: 1px solid rgba(255, 255, 255, 0.15);
+$border-strong: 1px solid rgba(255, 255, 255, 0.25);
+$border-primary: 1px solid $primary-color;
+$border-accent: 1px solid $accent-color;
+
+// ==========================================================================
+// ESTADOS INTERACTIVOS
+// Hover, focus, active para elementos interactivos
+// ==========================================================================
+
+$hover-overlay: rgba(255, 255, 255, 0.05);
+$hover-primary: rgba(143, 166, 134, 0.15);
+$hover-accent: rgba(232, 168, 137, 0.15);
+$focus-ring: 0 0 0 3px rgba(143, 166, 134, 0.4);
+$focus-ring-accent: 0 0 0 3px rgba(232, 168, 137, 0.4);
+
+// ==========================================================================
+// TRANSICIONES
+// Duraciones y curvas de animación
+// ==========================================================================
+
+$transition-fast: 0.15s ease;
+$transition-normal: 0.25s ease;
+$transition-slow: 0.4s ease;
+$transition-bounce: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+// ==========================================================================
+// ESPACIADO
+// Sistema de spacing consistente (base 4px)
+// ==========================================================================
+
+$spacing-xs: 0.25rem; // 4px
+$spacing-sm: 0.5rem; // 8px
+$spacing-md: 1rem; // 16px
+$spacing-lg: 1.5rem; // 24px
+$spacing-xl: 2rem; // 32px
+$spacing-2xl: 3rem; // 48px
+$spacing-3xl: 4rem; // 64px
+
+// ==========================================================================
+// TIPOGRAFÍA
+// Familias, tamaños y pesos de fuente
+// ==========================================================================
+
+$font-family-primary:
+  'Inter',
+  -apple-system,
+  BlinkMacSystemFont,
+  'Segoe UI',
+  Roboto,
+  sans-serif;
+$font-family-secondary: 'Poppins', sans-serif;
+
+$font-size-xs: 0.75rem; // 12px - labels pequeños, badges
+$font-size-sm: 0.875rem; // 14px - texto secundario, botones pequeños
+$font-size-md: 1rem; // 16px - texto base
+$font-size-lg: 1.125rem; // 18px - subtítulos
+$font-size-xl: 1.25rem; // 20px - títulos de cards
+$font-size-2xl: 1.5rem; // 24px - títulos de sección
+$font-size-3xl: 1.875rem; // 30px - títulos de página
+$font-size-4xl: 2.25rem; // 36px - hero, precios destacados
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// ==========================================================================
+// BREAKPOINTS
+// Puntos de quiebre para diseño responsive
+// ==========================================================================
+
+$breakpoint-xs: 480px; // Móviles pequeños
+$breakpoint-sm: 640px; // Móviles grandes
+$breakpoint-md: 768px; // Tablets
+$breakpoint-lg: 1024px; // Laptops
+$breakpoint-xl: 1280px; // Desktops
+$breakpoint-2xl: 1536px; // Pantallas grandes
+
+// ==========================================================================
+// Z-INDEX
+// Capas de apilamiento para elementos superpuestos
+// ==========================================================================
+
+$z-dropdown: 100;
+$z-sticky: 200;
+$z-fixed: 300;
+$z-modal-backdrop: 400;
+$z-modal: 500;
+$z-tooltip: 600;
+$z-toast: 700;

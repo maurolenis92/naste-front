@@ -1,0 +1,150 @@
+// ==========================================================================
+// Invoices Page - Página de facturas
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+.invoices-page {
+  padding: $spacing-xl;
+
+  @include media-query(mobile) {
+    padding: $spacing-lg;
+  }
+}
+
+.invoices-header {
+  @include flex-between;
+  margin-bottom: $spacing-xl;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+
+  h1 {
+    margin: 0;
+  }
+}
+
+.invoices-actions {
+  @include flex-center;
+  gap: $spacing-md;
+}
+
+.invoices-filters {
+  @include glassmorphism(light);
+  padding: $spacing-lg;
+  border-radius: $border-radius-lg;
+  margin-bottom: $spacing-xl;
+
+  .filter-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: $spacing-md;
+  }
+}
+
+.invoices-list {
+  @include glassmorphism(normal);
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+}
+
+.invoice-item {
+  @include flex-between;
+  padding: $spacing-lg;
+  border-bottom: $border-light;
+  transition: background $transition-fast;
+  cursor: pointer;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: $hover-overlay;
+  }
+
+  @include media-query(mobile) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-md;
+  }
+}
+
+.invoice-info {
+  flex: 1;
+
+  h3 {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-xs;
+  }
+
+  .invoice-meta {
+    @include flex-center;
+    gap: $spacing-md;
+    font-size: $font-size-sm;
+    color: $text-muted;
+    flex-wrap: wrap;
+  }
+}
+
+.invoice-amount {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $accent-color;
+  margin: 0 $spacing-xl;
+
+  @include media-query(mobile) {
+    margin: 0;
+  }
+}
+
+.invoice-actions {
+  @include flex-center;
+  gap: $spacing-sm;
+}
+
+// Vista detallada de factura
+.invoice-detail {
+  @include glassmorphism(normal);
+  border-radius: $border-radius-lg;
+  padding: $spacing-2xl;
+
+  @include media-query(mobile) {
+    padding: $spacing-lg;
+  }
+}
+
+.invoice-detail-header {
+  @include flex-between;
+  padding-bottom: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  border-bottom: $border-medium;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}
+
+.invoice-detail-body {
+  margin-bottom: $spacing-2xl;
+
+  .detail-row {
+    @include flex-between;
+    padding: $spacing-md 0;
+    border-bottom: $border-light;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.invoice-detail-footer {
+  padding-top: $spacing-lg;
+  border-top: $border-medium;
+
+  .total-row {
+    @include flex-between;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+    margin-top: $spacing-md;
+  }
+}

@@ -1,0 +1,135 @@
+// ==========================================================================
+// Buttons - Estilos de botones
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+// Base button
+.btn {
+  @include flex-center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-md;
+  font-family: $font-family-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  line-height: 1;
+  cursor: pointer;
+  border: none;
+  transition: all $transition-normal;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// Button Primary - Sage green
+.btn-primary {
+  background: $gradient-primary;
+  color: $text-inverse;
+  box-shadow: $shadow-glow-primary;
+
+  &:hover:not(:disabled) {
+    background: $primary-light;
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+// Button Accent - Coral
+.btn-accent {
+  background: $gradient-accent;
+  color: $text-inverse;
+  box-shadow: $shadow-glow-accent;
+
+  &:hover:not(:disabled) {
+    background: $accent-light;
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+// Button Outline
+.btn-outline {
+  background: transparent;
+  color: $primary-color;
+  border: 2px solid $primary-color;
+
+  &:hover:not(:disabled) {
+    background: $hover-primary;
+    border-color: $primary-light;
+  }
+}
+
+// Button Ghost - Con glassmorphism
+.btn-ghost {
+  @include glassmorphism(light);
+  color: $text-primary;
+
+  &:hover:not(:disabled) {
+    @include glassmorphism(normal);
+  }
+}
+
+// Tamaños de botones
+.btn-sm {
+  padding: $spacing-xs $spacing-md;
+  font-size: $font-size-sm;
+}
+
+.btn-md {
+  padding: $spacing-sm $spacing-lg;
+  font-size: $font-size-md;
+}
+
+.btn-lg {
+  padding: $spacing-md $spacing-xl;
+  font-size: $font-size-lg;
+}
+
+// Estado loading
+.btn-loading {
+  pointer-events: none;
+
+  &::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    margin-left: $spacing-sm;
+  }
+}
+
+// Botón de ancho completo
+.btn-full {
+  width: 100%;
+  justify-content: center;
+}
+
+// Grupo de botones
+.btn-group {
+  @include flex-center;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,116 @@
+// ==========================================================================
+// Reset - Normalización y reset de estilos con tema oscuro
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: $bg-primary;
+  color: $text-primary;
+  font-family: $font-family-primary;
+  font-size: $font-size-md;
+  line-height: $line-height-normal;
+}
+
+// Reset de elementos multimedia
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// Reset de formularios
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+// Reset de enlaces
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Reset de listas
+ul,
+ol {
+  list-style: none;
+}
+
+// Reset de headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+// Reset de párrafos
+p {
+  margin: 0;
+}
+
+// Selección de texto personalizada
+::selection {
+  background: opacity($primary-color, 0.3);
+  color: $text-primary;
+}
+
+::-moz-selection {
+  background: opacity($primary-color, 0.3);
+  color: $text-primary;
+}
+
+// Focus visible para accesibilidad
+:focus-visible {
+  outline: 2px solid $primary-color;
+  outline-offset: 2px;
+}
+
+// Mejora de performance para animaciones
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

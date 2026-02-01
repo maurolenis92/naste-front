@@ -1,0 +1,134 @@
+// ==========================================================================
+// Grid - Sistema de grid y contenedores
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+// Contenedor principal
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+
+  @include media-query(tablet) {
+    padding: 0 $spacing-md;
+  }
+
+  @include media-query(mobile) {
+    padding: 0 $spacing-md;
+  }
+}
+
+// Contenedor fluido (100% ancho)
+.container-fluid {
+  width: 100%;
+  padding: 0 $spacing-lg;
+
+  @include media-query(mobile) {
+    padding: 0 $spacing-md;
+  }
+}
+
+// Sistema de grid responsive
+.grid {
+  display: grid;
+  gap: $spacing-lg;
+
+  @include media-query(mobile) {
+    gap: $spacing-md;
+  }
+}
+
+// Grid de 2 columnas
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+
+  @include media-query(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Grid de 3 columnas
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+
+  @include media-query(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media-query(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Grid de 4 columnas
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+
+  @include media-query(desktop) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include media-query(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media-query(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Grid auto-fill (columnas automáticas según ancho mínimo)
+.grid-auto {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+// Gap variants
+.grid-gap-sm {
+  gap: $spacing-sm;
+}
+
+.grid-gap-md {
+  gap: $spacing-md;
+}
+
+.grid-gap-lg {
+  gap: $spacing-lg;
+}
+
+.grid-gap-xl {
+  gap: $spacing-xl;
+}
+
+// Flexbox utilities
+.flex {
+  display: flex;
+  gap: $spacing-md;
+}
+
+.flex-center {
+  @include flex-center;
+}
+
+.flex-between {
+  @include flex-between;
+}
+
+.flex-column {
+  @include flex-column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+// Responsive flex direction
+.flex-responsive {
+  display: flex;
+  gap: $spacing-md;
+
+  @include media-query(mobile) {
+    flex-direction: column;
+  }
+}

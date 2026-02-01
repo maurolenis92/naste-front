@@ -1,0 +1,100 @@
+// ==========================================================================
+// Products Page - Página de productos
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+.products-page {
+  padding: $spacing-xl;
+
+  @include media-query(mobile) {
+    padding: $spacing-lg;
+  }
+}
+
+.products-header {
+  @include flex-between;
+  margin-bottom: $spacing-xl;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+
+  h1 {
+    margin: 0;
+  }
+}
+
+.products-filters {
+  @include flex-center;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $spacing-lg;
+}
+
+.product-card {
+  @include glassmorphism(normal);
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  transition: all $transition-normal;
+
+  &:hover {
+    @include glassmorphism(strong);
+    transform: translateY(-8px);
+    box-shadow: $shadow-xl;
+  }
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: $bg-elevated;
+}
+
+.product-body {
+  padding: $spacing-lg;
+}
+
+.product-title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+  margin-bottom: $spacing-sm;
+  @include truncate;
+}
+
+.product-description {
+  font-size: $font-size-sm;
+  color: $text-muted;
+  margin-bottom: $spacing-md;
+  @include truncate-text(2);
+}
+
+.product-footer {
+  @include flex-between;
+  padding-top: $spacing-md;
+  border-top: $border-light;
+}
+
+.product-price {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $accent-color;
+}
+
+.product-stock {
+  font-size: $font-size-sm;
+  color: $text-muted;
+
+  &.low-stock {
+    color: $warning-color;
+  }
+
+  &.out-of-stock {
+    color: $error-color;
+  }
+}

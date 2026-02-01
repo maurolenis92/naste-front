@@ -1,0 +1,110 @@
+// ==========================================================================
+// Modals - Modales con glassmorphism
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $overlay-dark;
+  backdrop-filter: blur(4px);
+  z-index: $z-modal-backdrop;
+  @include flex-center;
+  padding: $spacing-lg;
+  animation: fadeIn 0.2s ease-out;
+  overflow-y: auto;
+}
+
+.modal-container {
+  @include glassmorphism(strong);
+  border-radius: $border-radius-xl;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: $shadow-xl;
+  animation: slideInUp 0.3s ease-out;
+  z-index: $z-modal;
+  @include custom-scrollbar;
+
+  @include media-query(mobile) {
+    max-width: 95%;
+  }
+}
+
+.modal-header {
+  @include flex-between;
+  padding: $spacing-lg;
+  border-bottom: $border-light;
+
+  h2,
+  h3 {
+    margin: 0;
+    font-size: $font-size-xl;
+    color: $text-primary;
+  }
+}
+
+.modal-close {
+  width: 32px;
+  height: 32px;
+  @include flex-center;
+  border-radius: $border-radius-full;
+  color: $text-muted;
+  transition: all $transition-fast;
+  cursor: pointer;
+
+  &:hover {
+    background: $hover-overlay;
+    color: $text-primary;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.modal-body {
+  padding: $spacing-lg;
+  color: $text-secondary;
+  line-height: $line-height-relaxed;
+}
+
+.modal-footer {
+  @include flex-between;
+  padding: $spacing-lg;
+  border-top: $border-light;
+  gap: $spacing-md;
+
+  @include media-query(mobile) {
+    flex-direction: column;
+
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+// Modal tamaños
+.modal-container-sm {
+  max-width: 400px;
+}
+
+.modal-container-lg {
+  max-width: 800px;
+}
+
+.modal-container-xl {
+  max-width: 1200px;
+}
+
+// Modal sin padding en el body (para contenido custom)
+.modal-no-padding {
+  .modal-body {
+    padding: 0;
+  }
+}

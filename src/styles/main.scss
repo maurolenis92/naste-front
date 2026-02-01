@@ -1,0 +1,39 @@
+// ==========================================================================
+// Main SCSS - Arquitectura 7-1 para NASTE
+// ==========================================================================
+// Este archivo importa todos los módulos siguiendo la metodología 7-1
+// para organización de estilos SCSS de manera escalable y mantenible.
+//
+// Orden de importación:
+// 1. Abstracts (variables, funciones, mixins)
+// 2. Vendors (librerías de terceros)
+// 3. Base (reset, tipografía, animaciones)
+// 4. Layout (estructura: grid, header, sidebar)
+// 5. Components (botones, cards, forms, etc.)
+// 6. Pages (estilos específicos de páginas)
+// 7. Themes (tema oscuro)
+// ==========================================================================
+
+// 1. Abstracts - No genera CSS, solo herramientas
+@use 'abstracts';
+
+// 2. Vendors - Estilos de terceros
+@use 'vendors';
+
+// 3. Base - Estilos fundamentales
+@use 'base';
+
+// 4. Layout - Estructura de la aplicación
+@use 'layout';
+
+// 5. Components - Componentes reutilizables
+@use 'components';
+
+// 6. Pages - Estilos específicos de páginas
+@use 'pages';
+
+// 7. Themes - Temas de la aplicación
+@use 'themes';
+
+// 8. Utilities - Clases de utilidad
+@use 'utilities';

@@ -1,0 +1,43 @@
+<div class="login-page">
+  <div class="login-container">
+    <div class="login-header">
+      <h1>Bienvenida</h1>
+      <p>Inicia sesión para continuar</p>
+    </div>
+
+    <form [formGroup]="form" class="login-form">
+      <app-input
+        formControlName="email"
+        id="email"
+        label="Correo"
+        type="email"
+        placeholder="tu@email.com"
+      ></app-input>
+      <app-input
+        formControlName="password"
+        id="password"
+        label="Contraseña"
+        type="password"
+        placeholder="********"
+      ></app-input>
+      @if (errorMessage) {
+        <div class="form-error">{{ errorMessage }}</div>
+      }
+      <app-button
+        (click)="login()"
+        type="submit"
+        label="Iniciar Sesión"
+        id="btn-submit"
+        [loading]="loading"
+        [disabled]="buttonDisabled"
+      ></app-button>
+    </form>
+
+    <!-- <div class="login-divider">
+    </div> -->
+
+    <!-- <div class="login-footer">
+      <p>¿Olvidaste tu contraseña? <a href="/register">Regístrate</a></p>
+    </div> -->
+  </div>
+</div>

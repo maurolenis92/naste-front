@@ -1,0 +1,87 @@
+// ==========================================================================
+// Login Page - Página de inicio de sesión
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+.login-page {
+  min-height: 100vh;
+  @include flex-center;
+  background: $gradient-dark;
+  padding: $spacing-lg;
+}
+
+.login-container {
+  @include glassmorphism(strong);
+  border-radius: $border-radius-xl;
+  padding: $spacing-2xl;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: $shadow-xl;
+  animation: slideInUp 0.5s ease-out;
+
+  @include media-query(mobile) {
+    padding: $spacing-xl;
+  }
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: $spacing-xl;
+
+  h1 {
+    font-size: $font-size-3xl;
+    color: $primary-color;
+    margin-bottom: $spacing-sm;
+  }
+
+  p {
+    color: $text-muted;
+    margin: 0;
+  }
+}
+
+.login-form {
+  .form-group {
+    margin-bottom: $spacing-lg;
+  }
+
+  .btn {
+    margin-top: $spacing-md;
+  }
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: $spacing-xl;
+  padding-top: $spacing-lg;
+  border-top: $border-light;
+
+  a {
+    color: $primary-color;
+    font-weight: $font-weight-medium;
+
+    &:hover {
+      color: $primary-light;
+    }
+  }
+}
+
+.login-divider {
+  @include flex-center;
+  margin: $spacing-xl 0;
+  color: $text-muted;
+  font-size: $font-size-sm;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: $border-light;
+  }
+
+  span {
+    padding: 0 $spacing-md;
+  }
+}
