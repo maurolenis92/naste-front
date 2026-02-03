@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 export interface GenericModalData {
   title: string;
   message: string;
@@ -5,4 +6,5 @@ export interface GenericModalData {
   cancelButtonText?: string;
   confirmAction?: () => void;
   cancelAction?: () => void;
+  additionalData?: any;
 }

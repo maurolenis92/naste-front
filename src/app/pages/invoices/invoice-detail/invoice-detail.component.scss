@@ -1,0 +1,191 @@
+@use 'abstracts' as *;
+
+.invoice-detail {
+  &__card {
+    @include glassmorphism(normal);
+    border-radius: $border-radius-lg;
+    padding: $spacing-lg;
+    margin-bottom: $spacing-xl;
+  }
+  &__information {
+    &__header {
+      display: flex;
+      gap: $spacing-xs;
+      color: $text-accent;
+      font-weight: $font-weight-medium;
+      margin-bottom: $spacing-md;
+    }
+    &__item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: $spacing-md;
+      .label {
+        color: $text-muted;
+        font-size: $font-size-sm;
+        margin-bottom: $spacing-xs;
+      }
+      .value {
+        font-size: $font-size-md;
+        font-weight: $font-weight-medium;
+        text-transform: capitalize;
+      }
+    }
+  }
+  &__payment {
+    &__header {
+      display: flex;
+      gap: $spacing-xs;
+      color: $text-accent;
+      font-weight: $font-weight-medium;
+      margin-bottom: $spacing-md;
+    }
+    &__card {
+      @include glassmorphism(light);
+      border-radius: $border-radius-md;
+      padding: $spacing-md;
+      margin-bottom: $spacing-md;
+    }
+    .label {
+      color: $text-muted;
+      font-size: $font-size-sm;
+      margin-bottom: $spacing-xs;
+    }
+    .value {
+      font-size: $font-size-md;
+      font-weight: $font-weight-medium;
+      &-accent {
+        color: $accent-color;
+      }
+    }
+  }
+
+  &__summary {
+    &__header {
+      display: flex;
+      gap: $spacing-xs;
+      color: $text-accent;
+      font-weight: $font-weight-medium;
+      margin-top: $spacing-lg;
+      margin-bottom: $spacing-md;
+    }
+  }
+
+  &__total {
+    grid-column: 2;
+    margin-top: $spacing-2xl;
+    .label {
+      color: $text-muted;
+      font-size: $font-size-sm;
+      &-total {
+        font-weight: $font-weight-medium;
+        font-size: $font-size-xl;
+      }
+    }
+    .value {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      &-total {
+        color: $accent-color;
+        font-size: $font-size-2xl;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+  &__actions {
+  }
+}
+
+// Estilos para impresión
+@media print {
+  // Ocultar sidebar y elementos del layout
+  .sidebar,
+  .dashboard-layout aside,
+  header,
+  nav,
+  .header {
+    display: none !important;
+  }
+
+  // Ajustar el main-content para que ocupe todo el ancho
+  .main-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  // Ocultar todo excepto la card
+  .invoice-detail > *:not(.invoice-detail__card) {
+    display: none !important;
+  }
+
+  // Ocultar elementos de navegación y acciones
+  .invoice-detail__actions {
+    display: none !important;
+  }
+
+  // Ajustar la card para impresión
+  .invoice-detail__card {
+    box-shadow: none !important;
+    background: white !important;
+    backdrop-filter: none !important;
+    border: 1px solid #e2e5e8 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 2rem !important;
+    page-break-inside: avoid;
+  }
+
+  // Ajustar colores para impresión
+  .invoice-detail__card * {
+    color: #000 !important;
+  }
+
+  // Mantener colores de badges
+  .badge {
+    border: 1px solid currentColor !important;
+  }
+
+  .badge-paid {
+    color: #8fa686 !important;
+  }
+
+  .badge-pending {
+    color: #d4c896 !important;
+  }
+
+  .badge-delivered {
+    color: #e8a889 !important;
+  }
+
+  .badge-cancelled {
+    color: #d4756a !important;
+  }
+
+  // Optimizar tabla para impresión
+  .table {
+    font-size: 10pt !important;
+    width: 100% !important;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.5rem !important;
+    border-bottom: 1px solid #e2e5e8 !important;
+  }
+
+  // Ajustar grid para impresión
+  .grid {
+    gap: 1rem !important;
+  }
+
+  // Valores destacados
+  .value-accent,
+  .value-total {
+    color: #e8a889 !important;
+    font-weight: bold !important;
+  }
+
+  .table-cell-accent {
+    color: #e8a889 !important;
+  }
+}

@@ -1,0 +1,22 @@
+@use 'abstracts' as *;
+.dashboard-layout {
+  display: flex;
+  height: 100vh;
+  background: $bg-primary;
+  position: relative;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-2xl;
+  background: $bg-primary;
+  overflow-y: auto;
+
+  @media print {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+}

@@ -1,0 +1,155 @@
+<div class="invoice-detail">
+  <h1>Detalle de factura</h1>
+  <div class="invoice-detail__card">
+    <div class="flex-column">
+      <div class="flex-between">
+        <h2>Factura #{{ invoice.id }}</h2>
+        <span
+          class="badge badge-dot"
+          [ngClass]="{
+            'badge-paid': invoice.status === 'PAID',
+            'badge-cancelled': invoice.status === 'CANCELLED',
+            'badge-delivered': invoice.status === 'DELIVERED',
+            'badge-pending': invoice.status === 'PENDING',
+          }"
+          >{{ invoice.status }}</span
+        >
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="grid grid-2">
+      <div class="invoice-detail__information">
+        <div class="invoice-detail__information__header">
+          <span class="material-icons">person</span>
+          <span>INFORMACIÓN DEL CLIENTE</span>
+        </div>
+        <div class="invoice-detail__information__item">
+          <span class="label">Nombre completo</span>
+          <span class="value">{{ invoice.customerName }}</span>
+        </div>
+        <div class="invoice-detail__information__item">
+          <span class="label">Teléfono</span>
+          <span class="value">{{ invoice.customerPhone }}</span>
+        </div>
+        <div class="invoice-detail__information__item">
+          <span class="label">Email</span>
+          <span class="value">{{ invoice.customerEmail }}</span>
+        </div>
+        <div class="invoice-detail__information__item">
+          <span class="label">Dirección de Envío</span>
+          <span class="value">{{ invoice.address }}</span>
+          <span class="value">{{ invoice.city }}</span>
+        </div>
+      </div>
+      <div class="invoice-detail__payment" paymentSummary>
+        <div class="invoice-detail__payment__header">
+          <span class="material-icons">payment</span>
+          <span>RESUMEN DE PAGO</span>
+        </div>
+        <div class="invoice-detail__payment__card">
+          <div class="flex-between">
+            <span class="label">Método de pago</span>
+            <span class="value"> {{ invoice.paymentMethod }}</span>
+          </div>
+          <div class="divider"></div>
+          <div class="flex-between">
+            <span class="label">Origen de venta</span>
+            <span class="value"> {{ invoice.origin }}</span>
+          </div>
+          <div class="divider"></div>
+          <div class="flex-between">
+            <span class="label">Fecha de emisión</span>
+            <span class="value"> {{ invoice.invoiceDate | date }}</span>
+          </div>
+          <div class="divider"></div>
+          <div class="flex-between">
+            <span class="label">Fecha de entrega</span>
+            <span class="value value-accent"> {{ invoice.deliveryDate | date }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="invoice-detail__summary">
+      <div class="invoice-detail__summary__header">
+        <span class="material-icons">list_alt</span>
+        <span> DETALLE DE ARTÍCULOS </span>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Descripción</th>
+              <th>Cantidad</th>
+              <th>Precio unitario</th>
+              <th>subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of invoice.items; track $index) {
+              <tr>
+                <td>{{ item.description }}</td>
+                <td>{{ item.quantity }}</td>
+                <td class="table-cell-accent">
+                  {{ item.unitPrice | currency }}
+                </td>
+                <td>{{ item.unitPrice * item.quantity | currency }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="grid grid-2">
+      <div class="invoice-detail__total">
+        <div class="flex-between">
+          <span class="label">Subtotal</span>
+          <span class="value">{{ invoice.total | currency }}</span>
+        </div>
+        <div class="flex-between">
+          <span class="label">Envio</span>
+          <span class="value">{{ 0 | currency }}</span>
+        </div>
+        <div class="flex-between">
+          <span class="label">IVA(19%)</span>
+          <span class="value">{{ 0 | currency }}</span>
+        </div>
+        <div class="divider"></div>
+        <div class="flex-between">
+          <span class="label-total">Total</span>
+          <span class="value-total">{{ invoice.total | currency }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="invoice-detail__actions btn-group">
+    <app-button
+      label="Eliminar"
+      icon="delete"
+      variant="ghost"
+      id="btn-delete"
+      (click)="openDeleteConfirmationModal()"
+    ></app-button>
+    <app-button
+      label="Editar"
+      icon="edit"
+      variant="ghost"
+      id="btn-edit"
+      (click)="editInvoice()"
+    ></app-button>
+    <app-button
+      label="Cambiar de estado"
+      icon="swap_horiz"
+      variant="ghost"
+      id="btn-change-status"
+      (click)="openUpdateStatusModal()"
+    ></app-button>
+    <app-button
+      label="Imprimir/Descargar"
+      icon="print"
+      variant="ghost"
+      id="btn-print-download"
+      (click)="downloadInvoice()"
+    ></app-button>
+  </div>
+</div>

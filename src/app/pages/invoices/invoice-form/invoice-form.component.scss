@@ -1,0 +1,38 @@
+@use 'abstracts' as *;
+
+.invoice-form {
+  &__card {
+    @include glassmorphism(light);
+    border-radius: $border-radius-lg;
+    padding: $spacing-lg;
+    transition: all $transition-normal;
+    background: $glass-bg-light;
+  }
+  .flex {
+    margin-bottom: rem(16);
+    .material-icons {
+      color: $text-accent;
+    }
+    .title {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: $text-primary;
+    }
+  }
+  .btn-item {
+    margin-bottom: rem(16);
+  }
+  .table {
+    span {
+      display: flex;
+      padding-bottom: rem(16);
+    }
+    app-select-input {
+      display: flex;
+      padding-bottom: 10px;
+    }
+  }
+  .btn-group {
+    align-items: end;
+  }
+}

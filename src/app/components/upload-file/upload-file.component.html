@@ -1,1 +1,36 @@
-<p>upload-file works!</p>
+<div class="upload-file">
+  <label *ngIf="label" [for]="id" class="upload-file__label">
+    {{ label }}
+  </label>
+  <div class="upload-file__container">
+    <input
+      [id]="id"
+      type="file"
+      [accept]="accept"
+      [disabled]="disabled"
+      (change)="onFileSelected($event)"
+      class="upload-file__input"
+      #fileInput
+    />
+    <button
+      type="button"
+      class="upload-file__button"
+      [disabled]="disabled"
+      (click)="fileInput.click()"
+    >
+      <span *ngIf="!fileName" class="upload-file__placeholder">{{ placeholder }}</span>
+      <span *ngIf="fileName" class="upload-file__filename">{{ fileName }}</span>
+    </button>
+    <button
+      *ngIf="fileName"
+      type="button"
+      class="upload-file__clear"
+      [disabled]="disabled"
+      (click)="clearFile()"
+      title="Limpiar archivo"
+    >
+      ✕
+    </button>
+  </div>
+  <span *ngIf="errorMessage" class="upload-file__error">{{ errorMessage }}</span>
+</div>

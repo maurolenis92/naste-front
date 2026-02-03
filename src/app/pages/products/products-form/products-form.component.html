@@ -1,0 +1,63 @@
+<div class="products-form">
+  <h1>Crear Producto</h1>
+  <div class="products-form__container">
+    <form [formGroup]="form">
+      <app-input
+        formControlName="code"
+        id="code"
+        label="Código"
+        placeholder="Ingrese el código"
+      ></app-input>
+      <app-input
+        formControlName="description"
+        id="description"
+        label="Descripción"
+        placeholder="Ingrese la descripción"
+      ></app-input>
+      <app-input
+        formControlName="price"
+        id="price"
+        label="Precio"
+        [currencyMask]="true"
+        placeholder="Ingrese el precio"
+      ></app-input>
+      <app-input
+        formControlName="stock"
+        id="stock"
+        label="Stock"
+        type="number"
+        placeholder="Ingrese el stock"
+      ></app-input>
+      <app-upload-file
+        formControlName="imageBase64"
+        id="image"
+        label="Imagen del producto"
+        accept="image/*"
+        placeholder="Seleccione una imagen (JPEG, máximo 5MB)"
+      ></app-upload-file>
+      <label class="form-check-label">
+        <input type="checkbox" formControlName="isActive" class="form-checkbox" />
+        <span>Activo</span>
+      </label>
+      <div class="btn-group">
+        <app-button
+          label="Cancelar"
+          icon="cancel"
+          type="button"
+          variant="outline"
+          id="btn-cancel"
+          (click)="cancel()"
+        ></app-button>
+        <app-button
+          (click)="action()"
+          [disabled]="buttonDisabled"
+          [loading]="buttonLoading"
+          type="submit"
+          label="Guardar"
+          icon="save"
+          id="btn-save"
+        ></app-button>
+      </div>
+    </form>
+  </div>
+</div>

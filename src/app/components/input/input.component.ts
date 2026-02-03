@@ -66,9 +66,9 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   // Implementación de ControlValueAccessor
   public writeValue(value: any): void {
     this.value = value || '';
-
+    //TODO: pending review
     if (this.currencyMask && this.internalControl) {
-      this.internalControl.setValue(value, { emitEvent: false });
+      // this.internalControl.setValue(value, { emitEvent: false });
     }
   }
 

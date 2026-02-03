@@ -1,0 +1,53 @@
+<div class="invoices">
+  <div class="invoices-header">
+    <h1>Facturas</h1>
+    <app-button
+      label="Nueva factura"
+      icon="add"
+      variant="accent"
+      (click)="navigateToCreateInvoice()"
+    ></app-button>
+  </div>
+
+  <div class="invoices__list">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#ID</th>
+            <th>CLIENTE</th>
+            <th>FECHA</th>
+            <th>TOTAL</th>
+            <th>ESTADO</th>
+            <th>FECHA ENTREGA</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of invoices; track $index) {
+            <tr (click)="navigateToInvoiceDetail(item.id ?? '')" class="cursor-pointer">
+              <td>{{ item.id }}</td>
+              <td>{{ item.customerName }}</td>
+              <td class="table-cell-accent">
+                {{ item.invoiceDate | date: 'dd MMM yyyy' }}
+              </td>
+              <td>{{ item.total | currency }}</td>
+              <td>
+                <span
+                  class="badge badge-dot"
+                  [ngClass]="{
+                    'badge-paid': item.status === 'PAID',
+                    'badge-cancelled': item.status === 'CANCELLED',
+                    'badge-delivered': item.status === 'DELIVERED',
+                    'badge-pending': item.status === 'PENDING',
+                  }"
+                  >{{ item.status }}</span
+                >
+              </td>
+              <td>{{ item.deliveryDate | date: 'dd MMM yyyy' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+@use 'abstracts' as *;
+
+.products-form {
+  &__container {
+    @include glassmorphism(light);
+    border-radius: $border-radius-lg;
+    padding: $spacing-lg;
+    transition: all $transition-normal;
+    background: $glass-bg-light;
+  }
+}

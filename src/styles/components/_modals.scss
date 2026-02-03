@@ -75,7 +75,7 @@
 }
 
 .modal-footer {
-  @include flex-between;
+  @include flex-center;
   padding: $spacing-lg;
   border-top: $border-light;
   gap: $spacing-md;

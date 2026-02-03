@@ -46,15 +46,16 @@
   flex-direction: column;
 }
 
+// TODO: REVIEW TEMPORALL IS NOT MOBILE FIRST
 // Media queries responsive - Mobile first
 // @param {string} $breakpoint - mobile, tablet, desktop
 @mixin media-query($breakpoint) {
   @if $breakpoint == mobile {
-    @media (min-width: $breakpoint-sm) {
+    @media (min-width: $breakpoint-sm) and (max-width: calc(#{$breakpoint-md} - 1px)) {
       @content;
     }
   } @else if $breakpoint == tablet {
-    @media (min-width: $breakpoint-md) {
+    @media (min-width: $breakpoint-md) and (max-width: calc(#{$breakpoint-lg} - 1px)) {
       @content;
     }
   } @else if $breakpoint == desktop {

@@ -213,3 +213,51 @@ $spacing-values: (
 .z-50 {
   z-index: 50 !important;
 }
+
+// Divider utilities
+.divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba($text-muted, 0.2) 20%,
+    rgba($text-muted, 0.2) 80%,
+    transparent
+  );
+  border: none;
+  margin: $spacing-md 0;
+
+  &--vertical {
+    width: 1px;
+    height: auto;
+    min-height: 2rem;
+    margin: 0 $spacing-md;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba($text-muted, 0.2) 20%,
+      rgba($text-muted, 0.2) 80%,
+      transparent
+    );
+  }
+
+  &--soft {
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba($text-muted, 0.1) 20%,
+      rgba($text-muted, 0.1) 80%,
+      transparent
+    );
+  }
+
+  &--strong {
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba($text-muted, 0.4) 20%,
+      rgba($text-muted, 0.4) 80%,
+      transparent
+    );
+  }
+}

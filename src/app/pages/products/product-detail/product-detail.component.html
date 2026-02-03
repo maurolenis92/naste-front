@@ -1,0 +1,55 @@
+<div class="product-detail">
+  <h1>Producto {{ product?.id }}</h1>
+  <div class="product-detail__card">
+    <div class="product-detail__card__image">
+      <div class="product-detail__card__image__back" (click)="goBack()">
+        <span class="material-icons">arrow_back</span>
+        <span>Volver</span>
+      </div>
+      <div class="product-detail__card__image__container">
+        <img [src]="productImageSrc" alt="PRODUCT-IMAGE" />
+      </div>
+    </div>
+    <div class="product-detail__card__information">
+      <span
+        class="badge badge-dot"
+        [ngClass]="{
+          'badge-paid': product!.stock > 1,
+          'badge-cancelled': product!.stock <= 1,
+        }"
+        >{{ product!.stock > 1 ? 'En Stock' : 'Sin Stock' }} {{ product?.stock }}</span
+      >
+      <div class="product-detail__card__information__item">
+        <span class="product-detail__card__information__label">CODIGO DEL PRODUCTO</span>
+        <h3>{{ product?.code }}</h3>
+      </div>
+      <div class="divider"></div>
+      <div class="product-detail__card__information__item">
+        <span class="product-detail__card__information__label">DESCRIPCIÓN</span>
+        <h2>{{ product?.description }}</h2>
+      </div>
+      <div class="divider"></div>
+      <div class="product-detail__card__information__item">
+        <span class="product-detail__card__information__label">PRECIO UNITARIO</span>
+        <span class="product-detail__card__information__price">
+          {{ product?.price | currency }}</span
+        >
+      </div>
+      <div class="btn-group">
+        <app-button
+          label="Eliminar"
+          icon="delete"
+          variant="outline"
+          id="btn-delete"
+          (click)="openDeleteConfirmationModal()"
+        ></app-button>
+        <app-button
+          label="Editar"
+          icon="edit"
+          id="btn-edit"
+          (click)="editProduct()"
+        ></app-button>
+      </div>
+    </div>
+  </div>
+</div>

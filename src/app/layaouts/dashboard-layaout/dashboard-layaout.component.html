@@ -1,0 +1,31 @@
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <!-- <img src="/logo.svg" alt="NASTE" /> -->
+        <span>NASTE</span>
+      </div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="sidebar-section">
+        @for (item of items; track $index) {
+          <div
+            [ngClass]="{ active: item.active }"
+            [routerLink]="['/dashboard' + item.route]"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="nav-item"
+          >
+            <span class="material-icons nav-icon">{{ item.icon }}</span>
+            <span nav-text>{{ item.label }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

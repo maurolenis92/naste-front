@@ -1,0 +1,109 @@
+@use '../../../styles/abstracts' as *;
+
+.upload-file {
+  margin-bottom: $spacing-lg;
+
+  &__label {
+    display: block;
+    margin-bottom: $spacing-sm;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $text-secondary;
+  }
+
+  &__container {
+    display: flex;
+    gap: $spacing-sm;
+    align-items: stretch;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__button {
+    flex: 1;
+    padding: $spacing-sm $spacing-md;
+    background: $bg-tertiary;
+    border: $border-light;
+    border-radius: $border-radius-md;
+    color: $text-primary;
+    font-size: $font-size-md;
+    font-family: $font-family-primary;
+    cursor: pointer;
+    text-align: left;
+    transition: all $transition-fast;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    &:hover:not(:disabled) {
+      border-color: $glass-border-strong;
+      background: $bg-elevated;
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: $bg-secondary;
+    }
+
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__placeholder {
+    color: $text-muted;
+  }
+
+  &__filename {
+    color: $primary-color;
+    font-weight: $font-weight-medium;
+  }
+
+  &__clear {
+    padding: $spacing-sm $spacing-md;
+    border: 1px solid $error-color;
+    border-radius: $border-radius-md;
+    background: rgba($error-color, 0.1);
+    color: $error-color;
+    cursor: pointer;
+    transition: all $transition-fast;
+    font-size: $font-size-lg;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+
+    &:hover:not(:disabled) {
+      background: $error-color;
+      color: $white;
+      box-shadow: $shadow-glow-accent;
+    }
+
+    &:focus-visible {
+      @include focus-ring($error-color);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__error {
+    display: block;
+    margin-top: $spacing-xs;
+    font-size: $font-size-xs;
+    color: $error-color;
+    font-weight: $font-weight-medium;
+  }
+}

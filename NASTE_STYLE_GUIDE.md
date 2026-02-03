@@ -1239,6 +1239,42 @@ Añade opacidad a un color.
 <div class="z-50">Z-index 50</div>
 ```
 
+### Divider (Divisores)
+
+Líneas divisoras con efecto de desvanecimiento gradual en los extremos.
+
+```html
+<!-- Divisor horizontal básico -->
+<div class="divider"></div>
+
+<!-- Divisor suave (más sutil) -->
+<div class="divider divider--soft"></div>
+
+<!-- Divisor fuerte (más visible) -->
+<div class="divider divider--strong"></div>
+
+<!-- Divisor vertical -->
+<div class="d-flex">
+  <div>Contenido izquierdo</div>
+  <div class="divider divider--vertical"></div>
+  <div>Contenido derecho</div>
+</div>
+```
+
+**Características:**
+
+- Gradiente que se desvanece en los extremos (20% - 80%)
+- Tono suave usando `$text-muted` con opacidad
+- Margen vertical automático: `$spacing-md` (16px)
+- Variante vertical con margen horizontal
+
+**Variantes disponibles:**
+
+- `.divider` - Divisor estándar (opacidad 0.2)
+- `.divider--soft` - Divisor muy sutil (opacidad 0.1)
+- `.divider--strong` - Divisor más marcado (opacidad 0.4)
+- `.divider--vertical` - Divisor vertical (para layouts horizontales)
+
 ---
 
 ## 💡 Ejemplos Prácticos

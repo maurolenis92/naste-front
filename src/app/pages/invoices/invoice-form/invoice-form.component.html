@@ -1,0 +1,178 @@
+<div class="invoice-form">
+  <h1>Crear Factura</h1>
+  <div class="invoice-form__card">
+    <form [formGroup]="form">
+      <div class="flex">
+        <span class="material-icons">person</span>
+        <span class="title">Información del Cliente</span>
+      </div>
+      <div class="grid grid-3">
+        <app-input
+          formControlName="customerName"
+          id="customerName"
+          label="Nombre Completo"
+          placeholder="Ingrese el nombre del cliente"
+        ></app-input>
+        <app-input
+          formControlName="customerIdDoc"
+          id="customerIdDoc"
+          label="Cedula/NIT"
+          placeholder="Ingrese la identificación del cliente"
+        ></app-input>
+        <app-input
+          formControlName="customerPhone"
+          id="customerPhone"
+          label="Celular"
+          placeholder="Ingrese el número de celular del cliente"
+        ></app-input>
+        <app-input
+          formControlName="customerEmail"
+          id="customerEmail"
+          label="Email"
+          type="email"
+          placeholder="Ingrese el email del cliente"
+        ></app-input>
+        <app-input
+          formControlName="city"
+          id="city"
+          label="Ciudad"
+          placeholder="Ingrese la ciudad del cliente"
+        ></app-input>
+        <app-input
+          formControlName="neighborhood"
+          id="neighborhood"
+          label="Barrio"
+          placeholder="Ingrese el barrio del cliente"
+        ></app-input>
+        <app-input
+          formControlName="address"
+          id="address"
+          label="Dirección"
+          placeholder="Ingrese la dirección del cliente"
+        ></app-input>
+      </div>
+      <div class="divider"></div>
+      <div class="flex">
+        <span class="material-icons">description</span>
+        <span class="title">Detalle de factura</span>
+      </div>
+      <div class="grid grid-3">
+        <app-select-input
+          formControlName="origin"
+          id="origin"
+          label="Origen de venta"
+          [options]="originOptions"
+        ></app-select-input>
+        <app-select-input
+          formControlName="paymentMethod"
+          id="paymentMethod"
+          label="Método de pago"
+          [options]="paymentMethodOptions"
+        ></app-select-input>
+        <app-date-picker
+          formControlName="deliveryDate"
+          id="deliveryDate"
+          label="Fecha de entrega estimada"
+        ></app-date-picker>
+      </div>
+      <div class="divider"></div>
+      <div class="flex-between">
+        <div class="flex">
+          <span class="material-icons">inventory</span>
+          <span class="title">Productos</span>
+        </div>
+        <app-button
+          (click)="addItem()"
+          class="btn-item"
+          label="Agregar Producto"
+          type="button"
+          icon="add"
+          variant="accent"
+          id="btn-add-product"
+        ></app-button>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Descripcion</th>
+              <th>Cantidad</th>
+              <th>Precio unit.</th>
+              <th>subtotal</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of getControls(); track $index) {
+              <tr [formGroup]="getGroup($index)">
+                <td>
+                  <app-select-input
+                    formControlName="productId"
+                    [id]="'productId-' + $index"
+                    [options]="productOptions"
+                  ></app-select-input>
+                </td>
+                <td>
+                  <app-input
+                    formControlName="description"
+                    [id]="'description-' + $index"
+                    placeholder="Ingrese la descripción"
+                  ></app-input>
+                </td>
+                <td>
+                  <app-input
+                    formControlName="quantity"
+                    [id]="'quantity-' + $index"
+                    type="number"
+                    placeholder="Ingrese la cantidad"
+                  ></app-input>
+                </td>
+                <td>
+                  <app-input
+                    formControlName="unitPrice"
+                    [id]="'unitPrice-' + $index"
+                    [currencyMask]="true"
+                    placeholder="Ingrese el precio unitario"
+                  ></app-input>
+                </td>
+                <td class="table-cell-accent">
+                  <span>{{ getTotalItem($index) | currency }}</span>
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn-icon btn-icon-danger"
+                    (click)="removeItem($index)"
+                  >
+                    <span class="material-icons">delete</span>
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <div class="divider"></div>
+      <div class="btn-group">
+        <app-button
+          label="Cancelar"
+          icon="cancel"
+          type="button"
+          variant="outline"
+          id="btn-cancel"
+          (click)="cancel()"
+        ></app-button>
+        <app-button
+          (click)="action()"
+          [disabled]="buttonDisabled"
+          [loading]="buttonLoading"
+          type="submit"
+          label="Guardar"
+          icon="save"
+          id="btn-save"
+        ></app-button>
+      </div>
+    </form>
+  </div>
+</div>

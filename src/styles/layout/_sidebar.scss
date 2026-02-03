@@ -5,7 +5,7 @@
 @use '../abstracts' as *;
 
 .sidebar {
-  position: fixed;
+  position: relative;
   left: 0;
   top: 0;
   height: 100vh;
@@ -17,13 +17,18 @@
   z-index: $z-fixed;
   @include custom-scrollbar;
 
-  @include media-query(tablet) {
-    transform: translateX(-100%);
-    transition: transform $transition-normal;
+  // @include media-query(tablet) {
+  //   transform: translateX(-100%);
+  //   transition: transform $transition-normal;
 
-    &.open {
-      transform: translateX(0);
-    }
+  //   &.open {
+  //     transform: translateX(0);
+  //   }
+  // }
+
+  // Ocultar en impresión
+  @media print {
+    display: none !important;
   }
 }
 

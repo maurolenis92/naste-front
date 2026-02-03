@@ -1,4 +1,4 @@
-<label [for]="id">{{ label }}</label>
+<label class="form-label" [for]="id">{{ label }}</label>
 <mat-form-field>
   @if (mode === 'range') {
     <mat-date-range-input [formGroup]="form" [id]="id" [rangePicker]="picker">

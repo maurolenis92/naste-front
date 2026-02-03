@@ -1,0 +1,64 @@
+@use 'abstracts' as *;
+
+.product-detail {
+  &__card {
+    @include glassmorphism(light);
+    border-radius: $border-radius-lg;
+    transition: all $transition-normal;
+    display: flex;
+    gap: 2rem;
+    &__image {
+      padding: $spacing-lg;
+      background: $bg-primary;
+      &__back {
+        display: flex;
+        align-items: center;
+        gap: rem(8);
+        margin: rem(16) 0;
+        cursor: pointer;
+      }
+      &__container {
+        padding: $spacing-xl;
+        img {
+          width: 450px;
+          height: 450px;
+          box-shadow: $shadow-glow-accent;
+          border-radius: $border-radius-md;
+          transition: all $transition-normal;
+        }
+      }
+    }
+    &__information {
+      flex: 1;
+      padding: $spacing-2xl;
+      display: flex;
+      margin-top: rem(24);
+      flex-direction: column;
+      .badge {
+        width: fit-content;
+      }
+      &__item {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-sm;
+        margin-top: rem(8);
+        h3 {
+          font-size: $font-size-3xl;
+        }
+      }
+      &__label {
+        font-size: $font-size-xs;
+        font-weight: $font-weight-semibold;
+        color: $text-muted;
+      }
+      &__price {
+        color: $text-accent;
+        font-size: $font-size-3xl;
+        font-weight: $font-weight-semibold;
+      }
+      .btn-group {
+        margin-top: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+<div class="modal-overlay">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h3>{{ data.title }}</h3>
+      <button (click)="closeModal()" class="modal-close">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <p>{{ data.message }}</p>
+      <app-select-input
+        [formControl]="status"
+        [options]="statusOptions"
+        label="Estado"
+      ></app-select-input>
+    </div>
+
+    <div class="modal-footer">
+      <button (click)="closeModal()" class="btn btn-outline">
+        {{ data.cancelButtonText }}
+      </button>
+      <button (click)="confirmChange()" class="btn btn-accent">
+        {{ data.confirmButtonText }}
+      </button>
+    </div>
+  </div>
+</div>
