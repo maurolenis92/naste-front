@@ -2,7 +2,7 @@
   <aside class="sidebar">
     <div class="sidebar-header">
       <div class="sidebar-logo">
-        <!-- <img src="/logo.svg" alt="NASTE" /> -->
+        <img src="../../../assets/logo.png" alt="NASTE" />
         <span>NASTE</span>
       </div>
     </div>
@@ -21,6 +21,17 @@
           </div>
         }
       </div>
+    </div>
+    <div class="sidebar-user">
+      <div class="divider"></div>
+      <span class="sidebar-user__name"> {{ userData().userProfile?.name }}</span>
+      <span class="sidebar-user__email">{{ userData().userProfile?.email }}</span>
+      <app-button
+        label="Cerrar sesión"
+        icon="logout"
+        id="btn-logout"
+        (click)="openLogoutModal()"
+      ></app-button>
     </div>
   </aside>
 

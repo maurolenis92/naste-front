@@ -20,3 +20,18 @@
     overflow: visible !important;
   }
 }
+.sidebar-user {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  &__name {
+    margin-top: $spacing-sm;
+    font-weight: $font-weight-medium;
+    color: $text-primary;
+  }
+  &__email {
+    font-size: $font-size-sm;
+    color: $text-muted;
+    margin-bottom: $spacing-lg;
+  }
+}

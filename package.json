@@ -34,12 +34,12 @@
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.14.2",
     "@aws-amplify/auth": "^6.17.0",
     "aws-amplify": "^6.15.8",
-    "ngx-currency": "^17.0.0"
+    "ngx-currency": "^17.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.9",
@@ -64,6 +64,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "lint-staged": "^16.2.7",
     "prettier": "^3.8.1",
+    "sharp": "^0.34.5",
     "typescript": "~5.2.2"
   }
 }

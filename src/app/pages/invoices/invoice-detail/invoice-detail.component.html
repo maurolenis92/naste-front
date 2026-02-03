@@ -12,7 +12,7 @@
             'badge-delivered': invoice.status === 'DELIVERED',
             'badge-pending': invoice.status === 'PENDING',
           }"
-          >{{ invoice.status }}</span
+          >{{ status }}</span
         >
       </div>
     </div>
@@ -49,12 +49,12 @@
         <div class="invoice-detail__payment__card">
           <div class="flex-between">
             <span class="label">Método de pago</span>
-            <span class="value"> {{ invoice.paymentMethod }}</span>
+            <span class="value"> {{ paymentMethod }}</span>
           </div>
           <div class="divider"></div>
           <div class="flex-between">
             <span class="label">Origen de venta</span>
-            <span class="value"> {{ invoice.origin }}</span>
+            <span class="value"> {{ origin }}</span>
           </div>
           <div class="divider"></div>
           <div class="flex-between">

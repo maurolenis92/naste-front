@@ -5,7 +5,12 @@ import { InvoicesService } from '../../../../services/invoices.service';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../../../components/button/button.component';
 import { ModalService } from '../../../../services/modal.service';
-import { STATUS_OPTIONS } from '../../../shared/constants/options.constants';
+import {
+  ORIGIN_OPTIONS,
+  PAYMENT_METHOD_OPTIONS,
+  STATUS_OPTIONS,
+} from '../../../shared/constants/options.constants';
+import { AlertService } from '../../../../services/alert.service';
 
 @Component({
   selector: 'app-invoice-detail',
@@ -20,6 +25,10 @@ export class InvoiceDetailComponent implements OnInit {
   private router = inject(Router);
   private invoicesService = inject(InvoicesService);
   private modalService = inject(ModalService);
+  private alertService = inject(AlertService);
+  public status: string = '';
+  public origin: string = '';
+  public paymentMethod: string = '';
 
   ngOnInit(): void {
     this.loadInvoice();
@@ -28,6 +37,9 @@ export class InvoiceDetailComponent implements OnInit {
   private loadInvoice(): void {
     this.invoicesService.getInvoiceById(this.id).subscribe(invoice => {
       this.invoice = invoice;
+      this.status = this.getStatus();
+      this.origin = this.getOrigin();
+      this.paymentMethod = this.getPaymentMethod();
     });
   }
 
@@ -42,11 +54,12 @@ export class InvoiceDetailComponent implements OnInit {
   private deleteInvoice(): void {
     this.invoicesService.deleteInvoice(this.id).subscribe({
       next: () => {
+        this.alertService.showSuccess('Factura eliminada exitosamente');
         this.router.navigate(['dashboard/invoices']);
       },
       error: error => {
+        this.alertService.showError('Error al eliminar la factura');
         console.error('Error al eliminar la factura:', error);
-        alert('Error al eliminar la factura');
       },
     });
   }
@@ -85,12 +98,32 @@ export class InvoiceDetailComponent implements OnInit {
   private updateStatus(status: string): void {
     this.invoicesService.updateInvoiceStatus(this.id, status).subscribe({
       next: () => {
+        this.alertService.showSuccess('Estado de la factura actualizado exitosamente');
         this.loadInvoice();
       },
       error: error => {
+        this.alertService.showError('Error al actualizar el estado de la factura');
         console.error('Error al actualizar el estado de la factura:', error);
-        alert('Error al actualizar el estado de la factura');
       },
     });
+  }
+
+  private getStatus(): string {
+    return (
+      STATUS_OPTIONS.find(option => option.value === this.invoice.status)?.label || ''
+    );
+  }
+
+  private getOrigin(): string {
+    return (
+      ORIGIN_OPTIONS.find(option => option.value === this.invoice.origin)?.label || ''
+    );
+  }
+
+  private getPaymentMethod(): string {
+    return (
+      PAYMENT_METHOD_OPTIONS.find(option => option.value === this.invoice.paymentMethod)
+        ?.label || ''
+    );
   }
 }

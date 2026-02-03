@@ -14,6 +14,7 @@ import { ButtonComponent } from '../../../components/button/button.component';
 import { Router } from '@angular/router';
 import { ProductsService } from '../../../../services/products.service';
 import { distinctUntilChanged, Subject, takeUntil } from 'rxjs';
+import { AlertService } from '../../../../services/alert.service';
 
 @Component({
   selector: 'app-products-form',
@@ -44,6 +45,7 @@ export class ProductsFormComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   private destroy$ = new Subject<void>();
   private productsService = inject(ProductsService);
+  private alertService = inject(AlertService);
 
   ngOnInit(): void {
     if (this.id) {
@@ -77,10 +79,12 @@ export class ProductsFormComponent implements OnInit, OnDestroy {
     this.productsService.createProduct(request).subscribe({
       next: () => {
         this.buttonLoading = false;
+        this.alertService.showSuccess('Producto creado exitosamente');
         this.router.navigate(['dashboard/products']);
       },
       error: () => {
         this.buttonLoading = false;
+        this.alertService.showError('Error al crear el producto');
       },
     });
   }
@@ -93,9 +97,11 @@ export class ProductsFormComponent implements OnInit, OnDestroy {
     this.productsService.updateProduct(this.id, request).subscribe({
       next: () => {
         this.buttonLoading = false;
+        this.alertService.showSuccess('Producto actualizado exitosamente');
         this.router.navigate(['dashboard/products']);
       },
       error: () => {
+        this.alertService.showError('Error al actualizar el producto');
         this.buttonLoading = false;
       },
     });

@@ -10,7 +10,11 @@
   background: $gradient-dark;
   padding: $spacing-lg;
 }
-
+.login-logo {
+  display: block;
+  margin: 0 auto $spacing-lg auto;
+  height: 100px;
+}
 .login-container {
   @include glassmorphism(strong);
   border-radius: $border-radius-xl;

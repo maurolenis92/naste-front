@@ -1,0 +1,11 @@
+INSTRUCCIONES:
+===============
+Por favor guarda la imagen del logo de Naste (el círculo con el texto "naste" y las ondas de colores) 
+en esta ubicación con el nombre: logo.png
+
+La imagen debe estar en formato PNG con fondo transparente.
+
+Una vez guardada, ejecuta:
+  node generate-favicons.js
+
+Esto generará automáticamente todos los favicons necesarios.

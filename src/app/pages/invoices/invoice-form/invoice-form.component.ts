@@ -25,6 +25,7 @@ import {
 } from '../../../shared/constants/options.constants';
 import { ProductsService } from '../../../../services/products.service';
 import { Product } from '../../../shared/models/products.model';
+import { AlertService } from '../../../../services/alert.service';
 
 @Component({
   selector: 'app-invoice-form',
@@ -61,6 +62,7 @@ export class InvoiceFormComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   private invoiceService = inject(InvoicesService);
   private productsService = inject(ProductsService);
+  private alertService = inject(AlertService);
   public buttonLoading: boolean = false;
   public buttonDisabled: boolean = true;
   public statusOptions: SelectOption[] = STATUS_OPTIONS;
@@ -164,13 +166,16 @@ export class InvoiceFormComponent implements OnInit, OnDestroy {
     this.invoiceService.updateInvoice(this.id!, request).subscribe({
       next: () => {
         this.buttonLoading = false;
+        this.alertService.showSuccess('Factura actualizada exitosamente');
         this.router.navigate(['dashboard/invoices']);
       },
       error: err => {
         if (err.error.error.includes('Insufficient stock')) {
-          window.alert('Error al actualizar la factura: Stock insuficiente');
+          this.alertService.showError(
+            'Error al actualizar la factura: Stock insuficiente'
+          );
         } else {
-          window.alert('Error al actualizar la factura');
+          this.alertService.showError('Error al actualizar la factura');
         }
         this.buttonLoading = false;
       },
@@ -195,9 +200,11 @@ export class InvoiceFormComponent implements OnInit, OnDestroy {
     this.invoiceService.createInvoice(request).subscribe({
       next: () => {
         this.buttonLoading = false;
+        this.alertService.showSuccess('Factura creada exitosamente');
         this.router.navigate(['dashboard/invoices']);
       },
       error: () => {
+        this.alertService.showError('Error al crear la factura');
         this.buttonLoading = false;
       },
     });

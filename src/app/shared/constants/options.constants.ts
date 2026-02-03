@@ -12,15 +12,15 @@ export const ORIGIN_OPTIONS: SelectOption[] = [
   { label: 'Facebook', value: 'FACEBOOK' },
   { label: 'TikTok', value: 'TIKTOK' },
   { label: 'WhatsApp', value: 'WHATSAPP' },
-  { label: 'Referral', value: 'REFERRAL' },
-  { label: 'Other', value: 'OTHER' },
+  { label: 'Referido', value: 'REFERRAL' },
+  { label: 'Otro', value: 'OTHER' },
 ];
 
 export const PAYMENT_METHOD_OPTIONS: SelectOption[] = [
-  { label: 'Cash', value: 'CASH' },
-  { label: 'Transfer', value: 'TRANSFER' },
+  { label: 'Efectivo', value: 'CASH' },
+  { label: 'Transferencia', value: 'TRANSFER' },
   { label: 'Breb', value: 'BREB' },
   { label: 'Nequi', value: 'NEQUI' },
   { label: 'Bancolombia', value: 'BANCOLOMBIA' },
-  { label: 'Other', value: 'OTHER' },
+  { label: 'Otro', value: 'OTHER' },
 ];
