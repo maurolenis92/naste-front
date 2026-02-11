@@ -1,0 +1,35 @@
+name: Deploy Angular to Lightsail
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Angular
+        run: npm run build -- --configuration production
+
+      # ⚠️ REVISA ESTA RUTA EN TU PROYECTO LOCAL
+      # En Angular 17+ suele ser: dist/nombre-repo/browser
+      # En Angular 16- suele ser: dist/nombre-repo
+      - name: Deploy to Server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: 'dist/naste-front/browser/*' # Ajusta esto
+          target: '/var/www/html'
+          strip_components: 3 # Quita las carpetas 'dist/proyecto/browser' para dejar los archivos sueltos en html

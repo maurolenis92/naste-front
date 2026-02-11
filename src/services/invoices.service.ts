@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClientService } from './http/http-client.service';
 import { Observable } from 'rxjs';
 import { Invoice } from '../app/shared/models/invoices.model';
+import { PaginatedResponse } from '../app/shared/models/pagination.model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +10,8 @@ import { Invoice } from '../app/shared/models/invoices.model';
 export class InvoicesService {
   private http = inject(HttpClientService);
 
-  public getInvoices(): Observable<Partial<Invoice>[]> {
-    return this.http.get('invoices');
+  public getInvoices<T>(params?: T): Observable<PaginatedResponse<Partial<Invoice>>> {
+    return this.http.get('invoices', params ? { params } : undefined);
   }
 
   public createInvoice(request: Partial<Invoice>): Observable<unknown> {

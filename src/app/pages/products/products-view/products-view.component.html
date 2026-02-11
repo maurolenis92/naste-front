@@ -10,41 +10,10 @@
   </div>
 
   <div class="products__list">
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Codigo</th>
-            <th>Descripcion</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Estado</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (item of products; track $index) {
-            <tr
-              (click)="navigateToProductDetail(item.id ?? '')"
-              class="cursor-pointer"
-            >
-              <td>{{ item.code }}</td>
-              <td>{{ item.description }}</td>
-              <td class="table-cell-accent">{{ item.price | currency }}</td>
-              <td>{{ item.stock }}</td>
-              <td>
-                <span
-                  class="badge"
-                  [ngClass]="{
-                    'badge-paid': item.isActive,
-                    'badge-cancelled': !item.isActive,
-                  }"
-                  >{{ item.isActive ? 'Disponible' : 'No Disponible' }}</span
-                >
-              </td>
-            </tr>
-          }
-        </tbody>
-      </table>
-    </div>
+    <app-table
+      [tableData]="tableData"
+      (pageChange)="loadData($event)"
+      (actionRowClick)="navigateToProductDetail($event)"
+    ></app-table>
   </div>
 </div>

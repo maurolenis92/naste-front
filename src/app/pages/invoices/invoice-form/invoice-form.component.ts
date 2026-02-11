@@ -82,8 +82,8 @@ export class InvoiceFormComponent implements OnInit, OnDestroy {
 
   private loadProductOptions(): void {
     this.productsService.getProducts().subscribe(options => {
-      this.products = options as Product[];
-      this.productOptions = options.map(product => ({
+      this.products = options.data as Product[];
+      this.productOptions = options.data.map(product => ({
         label: product.description!,
         value: product.id!,
       }));

@@ -55,7 +55,6 @@ export class HttpClientService {
       });
     }
 
-    console.log(params);
     return urlParams;
   }
 }

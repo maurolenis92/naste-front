@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClientService } from './http/http-client.service';
 import { Observable } from 'rxjs';
 import { Product } from '../app/shared/models/products.model';
+import { PaginatedResponse } from '../app/shared/models/pagination.model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +10,8 @@ import { Product } from '../app/shared/models/products.model';
 export class ProductsService {
   private http = inject(HttpClientService);
 
-  public getProducts(): Observable<Partial<Product>[]> {
-    return this.http.get('products');
+  public getProducts<T>(params?: T): Observable<PaginatedResponse<Partial<Product>>> {
+    return this.http.get('products', params ? { params } : undefined);
   }
 
   public createProduct(request: Partial<Product>): Observable<unknown> {

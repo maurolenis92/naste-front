@@ -99,3 +99,16 @@
 .table-cell-right {
   text-align: right !important;
 }
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 $spacing-lg;
+  .actions {
+    display: flex;
+    gap: $spacing-sm;
+    app-input {
+      width: 60px;
+    }
+  }
+}
