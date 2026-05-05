@@ -10,6 +10,21 @@
   </div>
 
   <div class="products__list">
+    <!-- TODO: TEMP DESIGN, REPLACE WITH REAL NAVSEARCH COMPONENT -->
+    <div style="display: flex; gap: 1rem; margin-bottom: 1rem">
+      <app-input
+        style="flex: 1"
+        placeholder="Buscar producto"
+        [formControl]="searchTerm"
+      ></app-input>
+      <app-button
+        label="Buscar"
+        icon="search"
+        variant="primary"
+        (click)="searchBycode()"
+      ></app-button>
+      <app-button icon="refresh" variant="outline" (click)="refresh()"></app-button>
+    </div>
     <app-table
       [tableData]="tableData"
       (pageChange)="loadData($event)"
